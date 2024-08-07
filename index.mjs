@@ -40,9 +40,12 @@ const getDstKey = (srcKey) => {
   // return srcKey.replace("origin", "resize").replace(/\.\w+$/, ".webp");
 
   // 예시2: /food_images/image.jpg -> /resize/food_images/image.webp
-  return srcKey
-    .replace(/^\//, "/resize/") // 시작 부분에 '/resize/' 추가
-    .replace(/\.\w+$/, ".webp"); // 확장자를 .webp로 변경
+  // return srcKey
+  // .replace(/^\//, "/resize/") // 시작 부분에 '/resize/' 추가
+  // .replace(/\.\w+$/, ".webp"); // 확장자를 .webp로 변경
+
+  // 예시3: /food_images/image.jpg -> /food_images/image.webp (원본 파일 이름 유지, 버킷 변경 권장)
+  return srcKey.replace(/\.\w+$/, ".webp");
 };
 
 const checkKeyType = (key) => {
