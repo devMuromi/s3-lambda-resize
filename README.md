@@ -1,13 +1,15 @@
 # s3-lambda-resize
-s3 업로드시 lambda(람다)를 통한 이미지 자동 리사이즈 예시 코드입니다.
+S3와 Lambda(람다)를 이용한 이미지 자동 리사이즈 코드.
 
-# 필요 과정
+[AWS SDK for JavaScript v3](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/)를 사용합니다.
+
+# 과정
 ## 1. 버킷 생성
 s3 업로드시 자동 이미지 리사이징을 위해 s3 버킷이 필요합니다.
 이때, 람다가 무한반복하는 오류를 방지하기 위해서 기존 이미지 버킷과 리사이즈 이미지 버킷을 따로 두는 것이 좋으나, 단지 버킷 내에서 디렉토리를 구분하는 것으로도 분리할 수 있습니다.
 
 ## 2. 람다 생성
-이미지 리사이즈를 진행할 람다를 생성합니다. 이때 runtime은 어느것으로도 할 수 있으나, 해당 레포지토리의 코드는 Javascript(Node.js 런타임)로 작성되었습니다.
+이미지 리사이즈를 진행할 람다를 생성합니다. 이때 runtime은 어느것으로도 할 수 있으나, 해당 코드는 Javascript(Node.js 런타임)로 작성되었습니다.
 > 이때 람다 생성시 Permissions의 Execution role에서 Create a new role with basic Lambda permissions를 선택해야 자동으로 CloudWatch Logs에 접근할 수 있는 권한이 부여됩니다. 이는 람다 작동시 필수권한임으로 선택해두는 것을 권장합니다.
 
 ## 3. IAM 정책 추가
